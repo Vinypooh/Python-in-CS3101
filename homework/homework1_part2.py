@@ -88,14 +88,14 @@ print(ans)
 # In the above example s[0] equals ’a’ and s[3] equals ’c’.
 s = 'abbcaabcaa'
 #Your code starts here
-a = []
-for i in range(0, len(s)): #using indices to access data, like a pointer
-    if i < len(s) - 1:  #means i + 1 is not out of bound
-        if s[i] == s[i+1]:  #see if two characters are same
-            i += 1
-        else:
-            a += s[i]
-    else:
-        a += s[i]
-print(''.join(a))
+result = ''
+for i in range(len(s)): #using indices to access data, like a pointer
+    if (i == len(s) - 1 or s[i] != s[i+1]) and (i == 0 or s[i] != s[i-1]):  #using complex logic conditon
+        result += s[i]
+print(result)
+
+result = [s[i] for i in range(len(s)) if (i == 0 or s[i] != s[i-1])
+                                       and (i == len(s) - 1 or s[i] != s[i+1])]
+print(''.join(result))
+
 #Your code ends here

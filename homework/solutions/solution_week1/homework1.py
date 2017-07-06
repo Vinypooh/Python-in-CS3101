@@ -13,32 +13,46 @@
 # Add your explanations as a new comment after each line. 
 
 #>>> y,x = [1], [1]
+
+## Two objects: y->Object1: [1]    x->Object2: [1]
+
 #>>> x is y
-#False 
-#Justification for the output:
-#The two lists are in different locations of memory. y is the name for the first one and x is for the second
-#one. Though the value of the list is equal, x and y are pointed to different location of memory. So the output is a
-#'False'
-#
-#
+#False
+
+## y and x refer to two different objects.
+
 #>>> x = y
+
+## Two objects: nothing-> Object1: [1]  x,y -> Object2: [1]
+## Eventually garbage collection will remove Object1, but this problem
+## assumes that objects are never collected. 
+
 #x is y
 #True
-#Justification for the output:
-#At this time, y also is also pointed to the second list, as variable x. Actually, y is the alias of variable x. This time
-#both of the variables are pointed to the same location of the memory, so the output is a 'True'
-#
-#
+
+##x and y refer to the same object
+
 #>>> y = y + x
+
+## Three objects:  Object1: [1]    x-> Object2:[1]    y->Object3: [1,1]
+
 #>>> x.append(y)
+
+## Three objects:      Object1: [1]   
+##                 x-> Object2:[1,Object3] = Object2:[1,[1,1]
+##                 y->Object3: [1,1]
+
+#y.append(24)
+
+## Three objects:      Object1: [1]   
+##                 x-> Object2:[1,Object3] = Object2:[1,[1,1,24]
+##                 y-> Object3 : [1,1,24]
+
 #>>> x == y
 #False
-#Justification for the output:
-#expression of 'y == y + x' creates a new list named y in the memory, whereas x.append(y) add value y 
-#to the original list named x. At this time, x and y have the same value of list but are pointed to 
-#different location of memory. So the output is a 'False'.
-#
-#
+
+##obviously no equal 
+
 ##############################################################################
 # Part 3 - Lists and for-Loops
 #
@@ -52,20 +66,10 @@
 a = [1, 2, 4]
 b = [2, 3]
 #Your code starts here
-
-        #ans = 0;
-        #for x in a:
-        #	for y in b:
-        #		ans += int(x) * int(y);
-        #print(ans);
-    #sum_1 = [ x * y for x in a for  y in b]
-    #ans = sum(sum_1)
-    #print(ans)
-ans = 0
+result = 0
 for x in a:
     for y in b:
-        ans += x * y
-print(ans)
+        result += x * y
 #Your code ends here
 
 
@@ -88,14 +92,13 @@ print(ans)
 # In the above example s[0] equals ’a’ and s[3] equals ’c’.
 s = 'abbcaabcaa'
 #Your code starts here
-a = []
-for i in range(0, len(s)): #using indices to access data, like a pointer
-    if i < len(s) - 1:  #means i + 1 is not out of bound
-        if s[i] == s[i+1]:  #see if two characters are same
-            i += 1
-        else:
-            a += s[i]
-    else:
-        a += s[i]
-print(''.join(a))
+result = ''
+for i in range(len(s)):
+    if (i==len(s) or s[i]!=s[i+1]) and (i==0 or s[i]!=s[i-1]):
+        result += s[i]
+
+# List comprehension solution: 
+
+char_list = [s[i] for i in range(len(s)) if not ((i==0 or s[i-1] != s[i]) and (i==len(s) or s[i+1] == s[i]))]
+result = "".join(char_list)
 #Your code ends here
