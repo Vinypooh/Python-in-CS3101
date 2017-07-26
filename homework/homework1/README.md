@@ -19,12 +19,12 @@ It is often easier to experiment with the shorter problems in the interpreter’
 
 1. Make sure you have a version of Python 3 installed. Open a terminal/command window and try to run the Python interpreter:
 
-    ```
+  ```python
   $python
   Python3.4 (default, May21 2014, 01:39:38)
   [GCC 4.2.1 Compatible Apple LLVM5.1 (clang− 503.0.40)]on darwin
   Type ”help”, ”copyright”, ”credits” or ”license” for more information.
-    ```
+  ```
 
   On some systems you need to start Python with the command python3 or python3.4 to run the correct version. If Python is not installed or you have the wrong version, you will need to get a new version. For Windows: download the installer for version 3. 4.1 and run it (packages are available at https://www.python.org/downloads/). For Mac: either download and run the Mac OS X installer, or use a package manager such as mac ports (`$ sudo port install python34`). For Linux, it’s best to use your distribution’s package manager (Ubuntu/Debian: `> $ sudo apt-get install python3`).
 
