@@ -1,4 +1,4 @@
-
+#test git
 #Data extracting model from url
 import xml.etree.ElementTree as ET
 tree = ET.parse("http://www.careerbuilder.com/RTQ/rss20.aspx?rssid=RSS_PD&num=1000&kw=")
